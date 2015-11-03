@@ -1,0 +1,50 @@
+<?php
+
+class BlackjackTestCase extends DrupalUnitTestCase {
+
+  public static function getInfo() {
+    return array(
+      'name' => 'Blackjack Tests',
+      'description' => 'Test that my blackjack cheating machine works properly.',
+      'group' => 'Epicodus Examples Tests',
+    );
+  }
+
+  public function setUp() {
+    drupal_load('module', 'blackjack');
+    parent::setUp();
+  }
+
+  function testBlackjack() {
+    // Input: number of cards in your hand
+    // Output: number of possible ways to get exactly 21 given number of cards
+
+    $description = 'There is no way to have 21 with no cards in your hand';
+    $input = 0;
+    $result = blackjack($input);
+    $expected_output = 0;
+    $this->assertEqual($result, $expected_output, $description);
+
+    $description = 'There is no way to have 21 with one card in your hand';
+    $input = 1;
+    $result = blackjack($input);
+    $expected_output = 0;
+    $this->assertEqual($result, $expected_output, $description);
+
+    $description = 'There are three ways to have 21 with two cards in your hand';
+    $input = 2;
+    $result = blackjack($input);
+    $expected_output = 3;
+    $this->assertEqual($result, $expected_output, $description);
+
+    $description = 'There is no way to have 21 with 21 cards in your hand';
+    $input = 21;
+    $result = blackjack($input);
+    $expected_output = 0;
+    $this->assertEqual($result, $expected_output, $description);
+
+
+
+
+  }
+}

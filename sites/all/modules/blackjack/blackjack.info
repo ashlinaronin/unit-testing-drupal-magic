@@ -1,0 +1,7 @@
+name = Blackjack
+description = Determine the number of ways there are ot make a total of 21
+package = Epicodus Examples
+core = 7.x
+files[] = blackjack.module
+files[] = blackjack.test
+dependencies[] = simpletest

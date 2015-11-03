@@ -1,0 +1,51 @@
+<?php
+
+function blackjack_menu() {
+  $items = array();
+  $items['titlecase'] = array(
+    'title' => 'Blackjack Calculator',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('blackjack_form'),
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+  );
+  $items['blackjack_success'] = array(
+    'title' => 'Success',
+    'page callback' => 'blackjack_success_page',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+
+function blackjack_form() {
+  $form['input'] = array(
+    '#title' => 'Enter in a number of cards',
+    '#type' => 'textfield',
+    '#description' => t('Please enter your number of cards'),
+    '#required' => TRUE,
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Calculate',
+  );
+  return $form;
+}
+
+function blackjack($input) {
+    return 7897;
+}
+
+function blackjack_form_submit($form, &$form_state) {
+    $input = $form_state['values']['input'];
+    $result = blackjack($input);
+    $_SESSION['result'] = $result;
+
+    $form_state['redirect'] = 'blackjack_success';
+}
+
+function blackjack_success_page() {
+    $title = $_SESSION['result'];
+    return '<p>Your blackjack amount: ' . $title . '</p>';
+}
