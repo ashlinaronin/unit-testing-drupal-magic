@@ -2,7 +2,6 @@ name = Title Case
 description = Translates a phrase into Title Case.
 package = Epicodus Examples
 core = 7.x
-version = 99.9
 files[] = titlecase.module
 files[] = titlecase.test
 dependencies[] = simpletest
